@@ -37,6 +37,7 @@ export default function Login({ navigation }) {
     <View style={{flex: 1}}>
         <ImageBackground source={require("../assets/images/Stage02.png")} style={{flex: 1}}>
           <TextInput 
+              style={styles.input}
               placeholder='Ingrese su E-mail'
               keyboardType='email-address'
               onChangeText={(text)=> setcorreo(text)}
@@ -44,17 +45,22 @@ export default function Login({ navigation }) {
           />
 
           <TextInput
+              style={styles.input}
               placeholder='Ingrese contraseña'
               onChangeText={(text)=> setpassword(text)}
           />
 
-      <TouchableOpacity style={styles.btn} onPress={()=>acceder()}>
-        <Text>Ingresar</Text>
-      </TouchableOpacity>
+          <View style={styles.buttonContainer}>
 
-      <TouchableOpacity style={styles.btn} onPress={()=>navigation.navigate("Registro")}>
-        <Text>Nuevo usuario</Text>
-      </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={()=>acceder()}>
+              <Text style={styles.inputText}>Ingresar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.btn} onPress={()=>navigation.navigate("Registro")}>
+              <Text style={styles.inputText}>Nuevo usuario</Text>
+            </TouchableOpacity>
+            
+          </View>
         </ImageBackground>
 
     </View>
@@ -68,9 +74,28 @@ const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
   btn:{
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#fff',
+    width: 150,
+    paddingVertical: 12,
+    borderRadius: 8,
+  },
+  buttonContainer:{
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingHorizontal: 16,
+    paddingBottom: 250,
+  },
+  input:{
+    borderColor: "black",
+    width: "100%",
+    borderWidth: 1,
+    borderRadius: 10,
     padding: 10,
-    
+  },
+  inputText:{
+    textAlign: 'center'
   }
 })
